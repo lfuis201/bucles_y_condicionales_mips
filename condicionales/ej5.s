@@ -27,8 +27,8 @@
     move $t2,$v0
 
     # si t1 es menor de 16 en otro caso vamos al Else
-    slt $t5, $t1, 16
-    slt $t5, $t2, 1000
+    slt $t6, $t1, 16
+    slt $t6, $t2, 1000
     beq $t6, 0, Else
     
     # imprimimos msje de false

@@ -74,7 +74,7 @@
     la $a0,msg2
     syscall
 
-    # imprimimos el viel que esta en t0
+    # imprimimos el nivel que esta en t0
     move $a0, $t0
     li $v0,4
     syscall
