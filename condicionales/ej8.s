@@ -39,7 +39,7 @@
 
     j Endif
 
-    # si f0 es igual a 0.4 sino vamos al else
+    # si f0 es igual a 0.4 sino vamos al else1
     Else:
     c.eq.s $f0, $f2
     bc1f Else1

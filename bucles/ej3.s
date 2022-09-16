@@ -1,13 +1,13 @@
 .data
-
-msg: .asciiz "\nIngrese un numero entero positivo: "
+    msg1: .asciiz "\nIngrese un numero entero: "
+    espacio: .asciiz ", "
 
 .text
 main:
 
-# imprimimos el primer mensaje
-li $v0, 4
-la $a0, msg
+# imprimimos el msg1
+li $v0,4
+la $a0,msg1
 syscall
 
 # recibimos el numero que el usuario ingreso en t1
@@ -15,31 +15,26 @@ li $v0,5
 syscall
 move $t1,$v0
 
-# asignamos el valor de 0 a t0
+# asignamos 1 a t0
+addi $t2, $0, 1
 
-li $t0, 0
-li $t5, 2
-# creamos el bucle for
-for:
-# inicia en t0 y termina en t1
+# for(for i=0; i<=t1; i+=2)
+loop:
+    bgt $t2, $t1, exit
+    # incrementamos t2 en 2
+    addi $t2, $t2, 2
 
-beq $t0,$t1,exit
-
-addi $t0,$t0,1
-div $t6, $t0, $t5
-
-beq $t6, 0, Else
-
-Else:
-    li $v0,1
-    move $a0, $t0
+    # imprimimos el numero que esta en t2
+    li $v0, 1
+    move $a0, $t2
     syscall
-    j Endif
-Endif:
 
-j for
-syscall
+    # imprimimos el msj de espacio
+    li $v0,4
+    la $a0,espacio
+    syscall
 
+    b loop
 exit:
 
 
