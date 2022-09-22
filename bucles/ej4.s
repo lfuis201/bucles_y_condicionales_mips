@@ -1,6 +1,6 @@
 
 .data
-    msg: .asciiz "Input a number: "
+    msg: .asciiz "Ingrese un numero: "
     spa: .asciiz ", "
 
 .text
@@ -28,6 +28,7 @@ sub $t2, $t0, $t1
 li $v0, 1
 move $a0, $t2
 syscall
+
 
 move    $t0, $t2    
 bgt $a0, 0, loop

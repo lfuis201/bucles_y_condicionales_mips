@@ -15,15 +15,18 @@
     syscall
     move $t1,$v0
 
-    # asignamos la division de t1 entre 2 a t6
-    div $t6,$t1,2
+    li $t2, 2
 
+    # asignamos la division de t1 entre 2 a t6
+    div $t1,$t2
+
+    mfhi $t6
     # si la division es 0 imprimimos que es par sino vamos al ese
     beq $t6, 0, Else
     
     # imprimimos msje de par
     li $v0,4
-    la $a0,par
+    la $a0,impar
     syscall
     
     # y terminamos el programa
@@ -32,7 +35,7 @@
     Else:
         # imprimimos el msje de impar
         li $v0,4
-        la $a0,impar
+        la $a0,par
         syscall
 
     Endif:
